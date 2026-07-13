@@ -12,10 +12,10 @@ curl -fsSL https://ax.yusuke.run/install | sh
 
 ## Usage
 
-### Run directly with npx/bunx
+### Run directly
 
 ```sh
-npx ax-mcp
+npx -y github:pyoif/ax-mcp
 bunx ax-mcp
 ```
 
