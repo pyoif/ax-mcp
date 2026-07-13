@@ -53,18 +53,25 @@ Or with bun:
 
 Fetch a URL — HTTP requests with curl-like flexibility.
 
-| Param          | Type    | Description                                    |
-| -------------- | ------- | ---------------------------------------------- |
-| `url`          | string  | URL, file path, or `-` for stdin               |
-| `method`       | string  | HTTP method (GET, POST, PUT, PATCH, DELETE, HEAD) |
-| `headers`      | object  | Request headers                                |
-| `body`         | string  | Request body                                   |
-| `bodyFile`     | string  | Read body from file                            |
-| `insecure`     | boolean | Allow insecure TLS (-k)                        |
-| `followRedirects` | boolean | Follow redirects (-L)                       |
-| `bodyOnly`     | boolean | Body only, uncapped (--body)                   |
-| `maxBytes`     | number  | Max response bytes                             |
-| `timeout`      | number  | Timeout in seconds                             |
+| Param            | Type    | Description                                    |
+| ---------------- | ------- | ---------------------------------------------- |
+| `url`            | string  | URL, file path, or `-` for stdin               |
+| `method`         | string  | HTTP method (GET, POST, PUT, PATCH, DELETE, HEAD) |
+| `headers`        | object  | Request headers as key-value pairs             |
+| `body`           | string  | Request body (strips CR/LF from @files)        |
+| `bodyFile`       | string  | Read body from file                            |
+| `dataRaw`        | string  | Request body literal (never reads @ as file)   |
+| `dataBinary`     | string  | Request body (preserves CR/LF from files)      |
+| `user`           | string  | Basic auth user:pass (-u)                      |
+| `head`           | boolean | Use HEAD method (-I)                           |
+| `output`         | string  | Save response to file (-o)                     |
+| `insecure`       | boolean | Allow insecure TLS (-k)                        |
+| `followRedirects`| boolean | Follow redirects (-L)                          |
+| `fail`           | boolean | Exit 22 on HTTP errors (-f)                    |
+| `bodyOnly`       | boolean | Body only, uncapped (--body)                   |
+| `showAllHeaders` | boolean | Show all response headers (--headers)          |
+| `maxBytes`       | number  | Max response bytes (default: 20MB)             |
+| `timeout`        | number  | Timeout in seconds (default: 30)               |
 
 ### `discover`
 
@@ -78,6 +85,9 @@ Discover page structure.
 | `text`    | string  | Text to find (locate mode)                  |
 | `fresh`   | boolean | Force refetch                               |
 | `noCache` | boolean | Skip disk cache                             |
+| `limit`   | number  | Max results                                 |
+| `all`     | boolean | Return all results                          |
+| `budget`  | number  | Token budget                                |
 
 ### `extract`
 
@@ -95,6 +105,8 @@ Extract data using CSS selectors.
 | `limit`   | number  | Max results                                 |
 | `all`     | boolean | Return all results                          |
 | `budget`  | number  | Token budget                                |
+| `fresh`   | boolean | Force refetch                               |
+| `noCache` | boolean | Skip disk cache                             |
 
 ## License
 

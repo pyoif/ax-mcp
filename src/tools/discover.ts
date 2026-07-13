@@ -12,6 +12,9 @@ export function registerDiscover(server: McpServer) {
       text: z.string().optional().describe("Text to find (for locate mode)"),
       fresh: z.boolean().optional().describe("Force refetch (ignore cache)"),
       noCache: z.boolean().optional().describe("Never use disk cache"),
+      limit: z.number().optional().describe("Max results"),
+      all: z.boolean().optional().describe("Return all results (no limit)"),
+      budget: z.number().optional().describe("Token budget for output"),
     },
   }, async (params) => {
     const args = [params.url];
@@ -20,6 +23,9 @@ export function registerDiscover(server: McpServer) {
     else if (params.mode === "count") args.push(params.selector ?? "", "--count");
     if (params.fresh) args.push("--fresh");
     if (params.noCache) args.push("--no-cache");
+    if (params.limit) args.push("--limit", String(params.limit));
+    if (params.all) args.push("--all");
+    if (params.budget) args.push("--budget", String(params.budget));
     const { stdout, stderr } = await runAx(args);
     return {
       content: [
