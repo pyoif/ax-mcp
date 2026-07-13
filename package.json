@@ -14,7 +14,7 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "tsc && node dist/index.js",
-    "prepare": "pnpm build",
+    "prepare": "tsc",
     "prepublishOnly": "pnpm build"
   },
   "keywords": [
