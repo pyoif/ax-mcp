@@ -1,0 +1,55 @@
+{
+  "workflow": {
+    "phases": {
+      "brainstorm": "pending",
+      "plan": "pending",
+      "execute": "active",
+      "verify": "pending",
+      "review": "pending",
+      "finish": "pending"
+    },
+    "currentPhase": "execute",
+    "artifacts": {
+      "brainstorm": null,
+      "plan": null,
+      "execute": null,
+      "verify": null,
+      "review": null,
+      "finish": null
+    },
+    "prompted": {
+      "brainstorm": false,
+      "plan": false,
+      "execute": false,
+      "verify": false,
+      "review": false,
+      "finish": false
+    }
+  },
+  "tdd": {
+    "phase": "red-pending",
+    "testFiles": [
+      "D:/project/ax-mcp/main/src/index.test.ts"
+    ],
+    "sourceFiles": [
+      "D:/project/ax-mcp/main/src/index.ts",
+      "D:/project/ax-mcp/main/src/ax.ts",
+      "D:/project/ax-mcp/main/src/tools/fetch.ts",
+      "D:/project/ax-mcp/main/src/tools/discover.ts",
+      "D:/project/ax-mcp/main/src/tools/extract.ts",
+      "D:/project/ax-mcp/main/src/tools/index.ts",
+      "D:/project/ax-mcp/main/test-import.ts",
+      "D:/project/ax-mcp/main/src/ax-client.ts"
+    ],
+    "redVerificationPending": true
+  },
+  "debug": {
+    "active": false,
+    "investigated": true,
+    "fixAttempts": 0
+  },
+  "verification": {
+    "verified": false,
+    "verificationWaived": false
+  }
+}
