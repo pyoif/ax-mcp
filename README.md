@@ -1,6 +1,6 @@
 # ax-mcp
 
-MCP server for [ax](https://ax.yusuke.run) — the AI-era curl.
+MCP server for [ax](https://github.com/yusukebe/ax) — the AI-era curl.
 
 ## Prerequisites
 
@@ -10,21 +10,38 @@ Install `ax` CLI:
 curl -fsSL https://ax.yusuke.run/install | sh
 ```
 
-## Install
-
-```sh
-pnpm add ax-mcp
-```
-
 ## Usage
 
-Add to your MCP client config (e.g. `~/.config/claude/claude_desktop_config.json`):
+### Run directly with npx/bunx
+
+```sh
+npx ax-mcp
+bunx ax-mcp
+```
+
+### Add to MCP client config
+
+Example for `~/.config/claude/claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
     "ax": {
-      "command": "ax-mcp"
+      "command": "npx",
+      "args": ["-y", "ax-mcp"]
+    }
+  }
+}
+```
+
+Or with bun:
+
+```json
+{
+  "mcpServers": {
+    "ax": {
+      "command": "bunx",
+      "args": ["ax-mcp"]
     }
   }
 }
@@ -32,12 +49,11 @@ Add to your MCP client config (e.g. `~/.config/claude/claude_desktop_config.json
 
 ## Tools
 
-### `ax_fetch`
+### `fetch`
 
 Fetch a URL — HTTP requests with curl-like flexibility.
 
 | Param | Type | Description |
-|-------|------|-------------|
 | `url` | string | URL, file path, or `-` for stdin |
 | `method` | string | HTTP method (GET, POST, PUT, PATCH, DELETE, HEAD) |
 | `headers` | object | Request headers |
@@ -49,12 +65,11 @@ Fetch a URL — HTTP requests with curl-like flexibility.
 | `maxBytes` | number | Max response bytes |
 | `timeout` | number | Timeout in seconds |
 
-### `ax_discover`
+### `discover`
 
 Discover page structure.
 
 | Param | Type | Description |
-|-------|------|-------------|
 | `url` | string | URL to discover |
 | `mode` | string | `outline`, `locate`, or `count` |
 | `selector` | string | CSS selector (count mode) |
@@ -62,12 +77,11 @@ Discover page structure.
 | `fresh` | boolean | Force refetch |
 | `noCache` | boolean | Skip disk cache |
 
-### `ax_extract`
+### `extract`
 
 Extract data using CSS selectors.
 
 | Param | Type | Description |
-|-------|------|-------------|
 | `url` | string | URL to extract from |
 | `selector` | string | CSS selector |
 | `mode` | string | `rows`, `table`, `attr`, `text`, `html`, `markdown` |
@@ -79,14 +93,6 @@ Extract data using CSS selectors.
 | `all` | boolean | Return all results |
 | `budget` | number | Token budget |
 
-## Development
-
-```sh
-pnpm install
-pnpm build
-pnpm test
-```
-
 ## License
 
-MIT
+GPL-3.0
